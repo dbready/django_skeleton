@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+
+{% block title %}CalcForm - {% endblock title %}
+
+{% block content %}
+<h2>A Form</h2>
+<form action="{% url 'core:calc_form' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock content %}
