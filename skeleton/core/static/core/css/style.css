@@ -6,6 +6,7 @@
 
 html {
     font-size: 100%;
+    height   : 100%;
 }
 
 body {
@@ -14,23 +15,26 @@ body {
     display       : flex;
     flex-direction: row;
     font-family   : "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif", "system-ui";
+    height        : 100%;
     line-height   : 1.4;
-    max-width     : 65em;
     text-rendering: optimizeLegibility;
 }
 
-#content {
+.content {
     flex-grow: 1;
     margin   : 1em;
+    max-width: 65em;
     width    : 100%;
 }
 
-#sidebar {
-    padding: 1em;
-    width  : 14em;
+.sidebar {
+    background-color: #eeeeee;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding         : 1em;
+    width           : 12em;
 }
 
-#sidebar img#logo {
+.sidebar__logo {
     width: 100%;
 }
 
@@ -39,11 +43,10 @@ ul {
 }
 
 .site-title {
-    flex : 1;
     color: #000000;
 }
 
-footer {
+.footer__version {
     color     : #777777;
     text-align: right;
 }

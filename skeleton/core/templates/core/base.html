@@ -12,11 +12,10 @@
 </head>
 
 <body>
-	<div id="sidebar">
+	<div class="sidebar">
 
-		<a href="{% url 'core:index' %}"><img id="logo" src="{% static 'core/img/logo.svg' %}" alt="Site logo"></a>
+		<a href="{% url 'core:index' %}"><img class="sidebar__logo" src="{% static 'core/img/logo.svg' %}" alt="Site logo"></a>
 		<h1 class="site-title">SKELETON</h1>
-
 		<nav>
 			<ul>
 				<li><a href="#">Content 1</a></li>
@@ -26,12 +25,12 @@
 		</nav>
 	</div>
 
-	<div id="content">
+	<div class="content">
 		{% block content %}{% endblock content %}
 
 		<footer>
 			<hr>
-			<div class="">SKELETON {{ APP_VERSION_NUMBER }}</div>
+			<div class="footer__version">SKELETON {{ APP_VERSION_NUMBER }}</div>
 		</footer>
 	</div>
 </body>
