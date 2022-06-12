@@ -1,36 +1,89 @@
-# Django SKELETON
+# Django Skeleton
 
-Django new project template. Created after having manually rebuilt to the same base state too many times. No more looking up urls import, load static template definition, boilerplate HTML, etc. The opinionated minimum to start writing the interesting stuff. Deployment is a hacky search-and-replace done in a way to offer a semblance of code auditing.
+[Cookiecutter](https://github.com/cookiecutter/cookiecutter) based Django quick start.
 
-With [ripgrep](https://github.com/BurntSushi/ripgrep) and [black](https://github.com/psf/black) on PATH, build a new 'foobar' project (in a new virtual environment) by:
+Includes several niceties which I think any project eventually requires.
+Likely too opinonated for anyone else's use, but I became tired of re-implementing the basics.
 
-```bash
-git clone https://github.com/dbready/django_skeleton.git foobar
-cd foobar
-# install latest Django release + minimum dependency
-pip install django dj-database-url
-pip freeze > requirements.txt
-# start fresh project locally
-django-admin startproject foobar
- # standardize code formatting
-black foobar
-# commit the new project configuration
-git add -A
-git commit -m "Commit fresh Django startproject"
-# replace fresh foobar with a copy of skeleton
-# (copy so as to not pollute the git diff)
-rm -rf foobar
-cp -r skeleton foobar
-mv foobar/skeleton foobar/foobar
-# case-sensitive search and replace placeholder project name
-rg --null --files-with-matches "SKELETON" | xargs -0 sed -i 's/SKELETON/FOOBAR/g'
-rg --null --files-with-matches "skeleton" | xargs -0 sed -i 's/skeleton/foobar/g'
-```
+## Usage
 
-Git will now report all diffs between the freshly run `startproject` and the skeleton. If everything in the `foobar` project is acceptable, finalize the initialization as if you had rolled-up your sleeves:
+By default, cookiecutter will deploy into the current working directory.
+To specify new destination, use the `--output-dir <directory>` argument.
+
+From git repository
 
 ```bash
-rm -rf skeleton
-rm -rf .git
-git init
+cookiecutter https://github.com/dbready/django_skeleton.git
 ```
+
+From local directory
+```bash
+cookiecutter ~/templates/django_skeleton
+```
+Will then produce a project outlined as below:
+
+```
+├── django_skeleton
+│   ├── core
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── static
+│   │   │   └── core
+│   │   │       ├── css
+│   │   │       │   ├── style.css
+│   │   │       │   └── water.css
+│   │   │       ├── icon
+│   │   │       │   ├── android-icon-192x192.png
+│   │   │       │   ├── android-icon-512x512.png
+│   │   │       │   ├── apple-touch-icon.png
+│   │   │       │   ├── favicon.ico
+│   │   │       │   └── favicon.svg
+│   │   │       └── img
+│   │   │           └── logo.svg
+│   │   ├── templates
+│   │   │   └── core
+│   │   │       ├── error
+│   │   │       │   ├── 400.html
+│   │   │       │   ├── 403.html
+│   │   │       │   ├── 404.html
+│   │   │       │   └── 500.html
+│   │   │       ├── base.html
+│   │   │       └── index.html
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_pages.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── django_skeleton
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_site.py
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── wsgi.py
+│   └── manage.py
+├── CHANGELOG.md
+├── Dockerfile
+├── dockerignore
+├── example.env
+├── LICENSE-APACHE
+├── LICENSE-MIT
+├── Makefile
+├── pyproject.toml
+└── README.md
+```
+
+
+## License
+
+This project is available under any of the following with which the user feels most comfortable.
+
+    - Apache 2
+    - CC0
+    - MIT

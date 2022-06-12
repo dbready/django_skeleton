@@ -1,0 +1,6 @@
+{
+    "project_name": "Django Skeleton",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "author": "Full Name <me@example.com>",
+    "_copy_without_render": []
+}

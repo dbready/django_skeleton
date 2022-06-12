@@ -1,0 +1,42 @@
+{% raw %}{% load static %}{% endraw %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="{{ cookiecutter.project_name }}" />
+	<meta property="og:type" content="website" />
+	{% raw %}
+	<link rel="icon" href="{% static 'core/icon/favicon.ico' %}" sizes="any">
+	<link rel="icon" href="{% static 'core/icon/favicon.svg' %}" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="{% static 'core/icon/apple-touch-icon.png' %}">
+	<link rel="manifest" href="{% url 'manifest_webmanifest' %}">
+
+	<title>{% block title %}{% endblock title %}
+	{%- endraw%}{{ cookiecutter.project_name }}</title>
+	{% raw %}
+	<link href="{% static 'core/css/water.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'core/css/style.css' %}" rel="stylesheet" type="text/css" />
+	{% block head %}{% endblock head %}
+</head>
+
+<body>
+	<nav>
+		<a href="{% url 'index' %}"><img src="{% static 'core/img/logo.svg' %}">
+		{%- endraw %}{{ cookiecutter.project_name }}</a>
+		<ul>
+			<li><a href="">Help</a></li>
+		</ul>
+	</nav>
+
+	<h1>{{ cookiecutter.project_name }}</h1>
+
+	<main>
+	{% raw %}{% block content %}{% endblock content %}{% endraw %}
+	</main>
+
+	<footer>
+	</footer>
+</body>
+</html>

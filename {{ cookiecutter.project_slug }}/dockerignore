@@ -1,0 +1,11 @@
+.git/
+.pytest_cache/
+.venv/
+.vscode/
+__pycache__/
+dist/
+staticfiles/
+.env
+*.pyc
+Dockerfile
+db.sqlite

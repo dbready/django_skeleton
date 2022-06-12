@@ -1,5 +1,0 @@
-build/
-__pycache__/
-.env
-.envrc
-db.sqlite3
