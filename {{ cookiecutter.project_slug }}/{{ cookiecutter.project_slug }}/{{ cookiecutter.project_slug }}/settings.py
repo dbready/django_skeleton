@@ -28,20 +28,21 @@ COMMIT_ID = os.environ.get("COMMIT_ID", "")
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-if os.getenv("{{ cookiecutter.project_slug.upper() }}_IS_DEBUG", "false").lower() in ("true"):
-    DEBUG = True
+
+# production by default, DEBUG only if environment variable is true
+DEBUG = os.getenv("{{ cookiecutter.project_slug.upper() }}_IS_DEBUG", "false").lower() == "true"
+if DEBUG:
     ALLOWED_HOSTS.append("localhost")
     ALLOWED_HOSTS.append("127.0.0.1")
     ALLOWED_HOSTS.append("0.0.0.0")
     ALLOWED_HOSTS.append("*")
-    SECRET_KEY = "django-insecure-r8c30$*on(=wxv3zf(8%z*3ichb4etjo083#2sw5zi4z&ag3&$"
+    SECRET_KEY = "{{ random_ascii_string(66, punctuation=False) }}"
 elif TESTING:
-    SECRET_KEY = "django-insecure-r8c30$*on(=wxv3zf(8%z*3ichb4etjo083#2sw5zi4z&ag3&$"
-else:
-    SECRET_KEY = os.environ["{{ cookiecutter.project_slug.upper() }}_SECRET_KEY"]
+    SECRET_KEY = "{{ random_ascii_string(66, punctuation=False) }}"
+else: # production default requires both keys explicitly set
     # environment variable can be space delimited to handle multiple
     ALLOWED_HOSTS.extend(os.environ["{{ cookiecutter.project_slug.upper() }}_ALLOWED_HOSTS"].split(" "))
+    SECRET_KEY = os.environ["{{ cookiecutter.project_slug.upper() }}_SECRET_KEY"]
 
 # Application definition
 
