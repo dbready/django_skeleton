@@ -40,8 +40,8 @@ if DEBUG:
 elif TESTING:
     SECRET_KEY = "{{ random_ascii_string(66, punctuation=False) }}"
 else: # production default requires both keys explicitly set
-    # environment variable can be space delimited to handle multiple
-    ALLOWED_HOSTS.extend(os.environ["{{ cookiecutter.project_slug.upper() }}_ALLOWED_HOSTS"].split(" "))
+    # environment variable can be comma delimited to handle multiple
+    ALLOWED_HOSTS.extend(os.environ["{{ cookiecutter.project_slug.upper() }}_ALLOWED_HOSTS"].split(","))
     SECRET_KEY = os.environ["{{ cookiecutter.project_slug.upper() }}_SECRET_KEY"]
 
 # Application definition
