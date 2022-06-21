@@ -39,7 +39,7 @@ if DEBUG:
     SECRET_KEY = "{{ random_ascii_string(66, punctuation=False) }}"
 elif TESTING:
     SECRET_KEY = "{{ random_ascii_string(66, punctuation=False) }}"
-else: # production default requires both keys explicitly set
+else:  # production default requires both keys explicitly set
     # environment variable can be comma delimited to handle multiple
     ALLOWED_HOSTS.extend(os.environ["{{ cookiecutter.project_slug.upper() }}_ALLOWED_HOSTS"].split(","))
     SECRET_KEY = os.environ["{{ cookiecutter.project_slug.upper() }}_SECRET_KEY"]
@@ -151,13 +151,12 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "{asctime} {levelname} {module} {process:d} {message}",
+            "format": "{asctime} {levelname} {module} {message}",
             "style": "{",
         },
     },
     "handlers": {
         "console": {
-            "level": os.environ.get("{{ cookiecutter.project_slug.upper() }}_LOG_LEVEL", "INFO"),
             "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
@@ -165,7 +164,12 @@ LOGGING = {
     "loggers": {
         "django": {
             "handlers": ["console"],
+            "level": os.environ.get("{{ cookiecutter.project_slug.upper() }}_LOG_LEVEL", "INFO"),
             "propagate": True,
+        },
+        "core": {
+            "handlers": ["console"],
+            "level": os.environ.get("{{ cookiecutter.project_slug.upper() }}_LOG_LEVEL", "INFO"),
         },
     },
 }
