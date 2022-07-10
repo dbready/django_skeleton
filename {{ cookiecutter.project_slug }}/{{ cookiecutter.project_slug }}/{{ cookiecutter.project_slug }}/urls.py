@@ -18,7 +18,7 @@ from django.urls import include, path
 
 from . import views
 
-# put in the app directly for more obvious template inheritence
+# put in the app directly for more obvious template inheritance
 handler400 = "core.views.error_bad_request"
 handler403 = "core.views.error_permission_denied"
 handler404 = "core.views.error_page_not_found"
