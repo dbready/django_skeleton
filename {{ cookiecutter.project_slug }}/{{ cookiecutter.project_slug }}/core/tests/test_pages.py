@@ -29,6 +29,21 @@ def test_android_favicon_manifest():
     c = Client()
     resp = c.get(manifest_url)
     assert resp.status_code == 200
+    # confirm is parsable and contains icons
+    data = resp.json()
+    assert "icons" in data
+
+
+def test_android_favicon_manifest_resources():
+    # confirm the URLs in android manifest exist
+    manifest_url = reverse("manifest_webmanifest")
+    c = Client()
+    resp = c.get(manifest_url)
+    data = resp.json()
+    for icon in data["icons"]:
+        icon_url = icon["src"]
+        resp = c.get(icon_url)
+        assert resp.status_code == 200
 
 
 def test_index(client):
