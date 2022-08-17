@@ -22,7 +22,7 @@ from . import views
 urlpatterns = [
     path(
         "favicon.ico",
-        RedirectView.as_view(url=staticfiles_storage.url("core/icon/favicon.ico")),
+        RedirectView.as_view(url=staticfiles_storage.url("core/favicon/favicon.ico")),
     ),
     path(
         "manifest.webmanifest",

@@ -11,10 +11,10 @@ import pytest
     "icon_path",
     [
         "/favicon.ico",  # favicon must exist at root
-        static("core/icon/android-icon-192x192.png"),
-        static("core/icon/android-icon-512x512.png"),
-        static("core/icon/apple-touch-icon.png"),
-        static("core/icon/favicon.svg"),
+        static("core/favicon/android-icon-192x192.png"),
+        static("core/favicon/android-icon-512x512.png"),
+        static("core/favicon/apple-touch-icon.png"),
+        static("core/favicon/favicon.svg"),
     ],
 )
 def test_favicons(icon_path):

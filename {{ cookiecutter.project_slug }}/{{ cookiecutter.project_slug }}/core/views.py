@@ -26,12 +26,12 @@ def manifest_webmanifest(request):
     context = {
         "icons": [
             {
-                "src": static("core/icon/android-icon-192x192.png"),
+                "src": static("core/favicon/android-icon-192x192.png"),
                 "type": "image/png",
                 "sizes": "192x192",
             },
             {
-                "src": static("core/icon/android-icon-512x512.png"),
+                "src": static("core/favicon/android-icon-512x512.png"),
                 "type": "image/png",
                 "sizes": "512x512",
             },
