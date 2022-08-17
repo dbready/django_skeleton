@@ -1,6 +1,6 @@
 .PHONY : collectstatic
 collectstatic :
-	export {{ cookiecutter.project_slug.upper() }}_IS_DEBUG=True; poetry run python {{ cookiecutter.project_slug }}/manage.py collectstatic
+	export {{ cookiecutter.project_slug.upper() }}_IS_DEBUG=True; poetry run python {{ cookiecutter.project_slug }}/manage.py collectstatic --no-input
 
 .PHONY : docker
 docker :
